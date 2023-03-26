@@ -9,8 +9,8 @@ export const profileApi = createApi({
     getPost: builder.query({
       query: () => "todos",
     }),
-    getPostByName: builder.query({
-      query: (id) => `todos/${id}`,
+    getUserProfileByID: builder.query({
+      query: (id) => `users/${id}`,
     }),
     createPost: builder.mutation({
       query: (todo) => ({
@@ -30,7 +30,7 @@ export const profileApi = createApi({
 });
 
 export const {
-  useGetPostByNameQuery,
+  useGetUserProfileByIDQuery,
   useGetPostQuery,
   useCreatePostMutation,
   useDeletePostMutation,
