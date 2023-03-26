@@ -12,9 +12,26 @@ export const profileApi = createApi({
     getPostByName: builder.query({
       query: (id) => `todos/${id}`,
     }),
+    createPost: builder.mutation({
+      query: (todo) => ({
+        url: "todos",
+        method: "POST",
+        body: todo,
+      }),
+    }),
+    deletePost: builder.mutation({
+      query: (id) => ({
+        url: `todos/${id}`,
+        method: "DELETE",
+        body: id,
+      }),
+    }),
   }),
 });
 
-export const { useGetPostByNameQuery, useGetPostQuery } = profileApi;
-
-// export default profileApi
+export const {
+  useGetPostByNameQuery,
+  useGetPostQuery,
+  useCreatePostMutation,
+  useDeletePostMutation,
+} = profileApi;

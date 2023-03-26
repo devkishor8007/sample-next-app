@@ -2,7 +2,7 @@ import { useGetPostByNameQuery } from "@/redux/profileQuery";
 import React from "react";
 
 const profile = () => {
-  const { isLoading, isError, data, error } = useGetPostByNameQuery(1);
+  const { isLoading, isError, data, error } = useGetPostByNameQuery(5);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -13,9 +13,9 @@ const profile = () => {
 
   return (
     <>
-      <div>UserId: {data.id}</div>
-      <div>title: {data.title}</div>
-      completed: {data.completed ? "true" : "false"}
+      <div>UserId: {data?.id}</div>
+      <div>title: {data?.title}</div>
+      completed: {data?.completed ? "true" : "false"}
     </>
   );
 };

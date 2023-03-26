@@ -1,6 +1,7 @@
-import { useGetPostQuery } from "@/redux/profileQuery";
+import { useGetPostQuery, useDeletePostMutation } from "@/redux/profileQuery";
 
 const friend = () => {
+  const [deletePost] = useDeletePostMutation();
   const { data, isLoading, isError, error } = useGetPostQuery();
   if (isLoading) {
     return <div>Loading...</div>;
@@ -24,7 +25,7 @@ const friend = () => {
               height: "20px",
             }}
           >
-            <h3>{item.id}</h3>
+            <h3 onClick={() => deletePost({ id: item.id })}>{item.id}</h3>
             <p style={{ padding: "10px" }}>{item.title}</p>
           </div>
         );
