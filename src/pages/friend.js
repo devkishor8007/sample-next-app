@@ -1,8 +1,8 @@
-import { useGetPostQuery, useDeletePostMutation } from "@/redux/profileQuery";
+import { useGetUserQuery, useDeleteUserMutation } from "@/redux/profileQuery";
 
 const friend = () => {
-  const [deletePost] = useDeletePostMutation();
-  const { data, isLoading, isError, error } = useGetPostQuery();
+  const [deleteUser] = useDeleteUserMutation();
+  const { data, isLoading, isError, error } = useGetUserQuery();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -13,10 +13,10 @@ const friend = () => {
 
   return (
     <>
-      {data.map((item) => {
+      {data.map((user) => {
         return (
           <div
-            key={item.id}
+            key={user.id}
             style={{
               display: "flex",
               alignItems: "center",
@@ -25,8 +25,8 @@ const friend = () => {
               height: "20px",
             }}
           >
-            <h3 onClick={() => deletePost({ id: item.id })}>{item.id}</h3>
-            <p style={{ padding: "10px" }}>{item.title}</p>
+            <h3 onClick={() => deleteUser({ id: user.id })}>{user.id}</h3>
+            <p style={{ padding: "10px" }}>{user.username}</p>
           </div>
         );
       })}

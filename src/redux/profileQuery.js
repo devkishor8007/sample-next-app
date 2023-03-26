@@ -6,22 +6,22 @@ export const profileApi = createApi({
     baseUrl: "https://jsonplaceholder.typicode.com/",
   }),
   endpoints: (builder) => ({
-    getPost: builder.query({
-      query: () => "todos",
+    getUser: builder.query({
+      query: () => "users",
     }),
     getUserProfileByID: builder.query({
       query: (id) => `users/${id}`,
     }),
-    createPost: builder.mutation({
+    createUser: builder.mutation({
       query: (todo) => ({
-        url: "todos",
+        url: "users",
         method: "POST",
         body: todo,
       }),
     }),
-    deletePost: builder.mutation({
+    deleteUser: builder.mutation({
       query: (id) => ({
-        url: `todos/${id}`,
+        url: `users/${id}`,
         method: "DELETE",
         body: id,
       }),
@@ -31,7 +31,7 @@ export const profileApi = createApi({
 
 export const {
   useGetUserProfileByIDQuery,
-  useGetPostQuery,
-  useCreatePostMutation,
-  useDeletePostMutation,
+  useGetUserQuery,
+  useCreateUserMutation,
+  useDeleteUserMutation,
 } = profileApi;
